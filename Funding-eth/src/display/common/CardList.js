@@ -6,7 +6,6 @@ import { Card, Image, List, Progress} from 'semantic-ui-react'
 const CardList = (props) => {
     let details = props.details
     let onCardClick = props.onCardClick
-
     let cards = details.map(detail => {
         return <CardFunding key={detail.fundingAddress} detail={detail} onCardClick = {onCardClick}/>
     })
@@ -26,19 +25,21 @@ const CardFunding = (props) => {
     let { fundingAddress, manager, projectName, supportBalance, targetBalance, endTime, balance, investorsCount } = detail
     let precent = parseFloat(balance) / parseFloat(targetBalance) * 100
     let onCardClick = props.onCardClick
+    let image = `/images/${Math.round(Math.random() * (10 - 1)) + 1}.jpg`
+
 
     return (
         <Card onClick={() => {
             return onCardClick && onCardClick(detail)
 
         }}>
-            <Image src='/images/elliot.jpg' wrapped ui={false} />
+            <Image src= {image} wrapped ui={false} />
             <Card.Content>
                 <Card.Header>{projectName}</Card.Header>
                 <Card.Meta>
                     <span className='date'>剩余时间：{endTime}s</span>
                 </Card.Meta>
-                <Card.Description>穿过的都说好</Card.Description>
+                <Card.Description>---众筹人生---</Card.Description>
             </Card.Content>
             <Card.Content extra>
                 <List horizontal style={{ display: 'flex', justifyContent: 'space-around' }}>

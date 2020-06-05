@@ -21,8 +21,15 @@ class FaucetTab extends Component {
 
     async takeTestCoin(to){
         let accounts = await web3.eth.getAccounts()
-
-        return web3.eth.sendTransaction({from: accounts[0], to,value: 10*10**18,data:"",gas:100000});
+        const result = await web3.eth.sendTransaction({from: accounts[0], to,value: 10*10**18,data:"",gas:100000});
+        console.log(454, result)
+        const balance = await web3.eth.getBalance(to)
+        if (result && result.status) {
+            alert(`获取测试币成功\n 余额：${balance*10**(-18)}`)
+        }else {
+            alert(`获取测试币失败\n 余额：${balance*10**(-18)}`)
+        }
+        return result
     }
 
     handleChange = (e, { name, value }) => this.setState({ [name]: value })

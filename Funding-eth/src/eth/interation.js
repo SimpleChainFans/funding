@@ -109,6 +109,7 @@ let createRequest = (fundingAddress,purpose,cost,seller) => {
                 from:accounts[0]
 
             })
+            console.log(3443, result)
             resolve(result)
 
         } catch (error) {

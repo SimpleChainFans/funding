@@ -43,7 +43,8 @@ class CreatorFundingTab extends Component {
         console.log(requestDesc, requestBalance, requestAddress)
         //创建花费请求
         try {
-            await createRequest(selectedFundingDetail.fundingAddress, requestDesc, requestBalance, requestAddress)
+            const result = await createRequest(selectedFundingDetail.fundingAddress, requestDesc, requestBalance, requestAddress)
+            console.log(3434, result)
         } catch (error) {
             console.log(error)
         }
@@ -113,8 +114,8 @@ class CreatorFundingTab extends Component {
                 {
                     selectedFundingDetail && (<div>
                         <Button onClick={this.handleShowRequests}>申请详情</Button>
-                        <RequestTable 
-                            requestsDeatils={requestsDeatils} 
+                        <RequestTable
+                            requestsDeatils={requestsDeatils}
                             handleFinalize={this.handleFinalize}
                             pageKey={2}
                             investorsCount={selectedFundingDetail.investorsCount}

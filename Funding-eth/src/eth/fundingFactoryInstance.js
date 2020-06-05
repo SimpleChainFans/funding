@@ -4,7 +4,7 @@ import web3 from '../utils/initWeb3'
 //获取工厂合约abi
 let factoryAbi = [{"constant":true,"inputs":[],"name":"platformManager","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_name","type":"string"},{"name":"_supportMoney","type":"uint256"},{"name":"_targetMoney","type":"uint256"},{"name":"_duration","type":"uint256"}],"name":"createFunding","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getAllFundings","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getSupportorFunding","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCreatorFundings","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]
 //获取工厂合约地址
-let factoryAddress = '0xb35644a59b67d25d9c76fea38b94be32f020c9bb'
+let factoryAddress = '0xc47e809f6593ddb8cb9f3c4e77cce2d9586000bd'
 //获取工厂合约实例
 let fundingFactoryInstance = new web3.eth.Contract(factoryAbi,factoryAddress)
 
