@@ -28,15 +28,16 @@ class AllFundingTab extends Component {
             selectedFundingDetail:selectedFundingDetail
         })
     }
+    handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
     handleInvest = async () => {
         this.setState({active:true})
         let {fundingAddress, supportBalance,} = this.state.selectedFundingDetail
         //需要传递选中的合约地址
         //创建合约实例，参与众筹（send，别忘了合约转钱,value）
+        let {customAccount, password} = this.state
         try {
-
-            await handleInvestFunc(fundingAddress,supportBalance)
+            await handleInvestFunc(fundingAddress,supportBalance, customAccount, password)
             this.setState({active:false})
         } catch (error) {
             console.log(error)
@@ -46,6 +47,7 @@ class AllFundingTab extends Component {
 
     render() {
         let {fundingAddress,  projectName,  supportBalance } = this.state.selectedFundingDetail
+        let {customAccount, password} = this.state
         return (
             <div>
                 <CardList details={this.state.allFundingDetails} onCardClick={this.onCardClick}/>
@@ -62,6 +64,19 @@ class AllFundingTab extends Component {
                                 labelPosition='left'>
                                 <Label basic>￥</Label>
                                 <input />
+                            </Form.Input>
+                            <Form.Input required type='text' placeholder='我的账户' name='customAccount'
+                                        value={customAccount} label='我的账户:'
+                                        labelPosition='left'
+                                        onChange={this.handleChange}>
+                                
+                                <input/>
+                            </Form.Input>
+                            <Form.Input required type='text' placeholder='密码' name='password'
+                                        value={password} label='密码:'
+                                        labelPosition='left'
+                                        onChange={this.handleChange}>
+                                <input/>
                             </Form.Input>
 
                             <Form.Button primary content='参与众筹' />

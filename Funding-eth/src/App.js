@@ -26,7 +26,7 @@ class App extends Component {
         return (
             <div>
                 <h1>众筹平台</h1>
-                <p>当前账户：{this.state.currentAccount}</p>
+                <h3>当前为测试平台，以下请领用测试账户</h3>
                 <TabCenter/>
             </div>
 

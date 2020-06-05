@@ -2,7 +2,7 @@ import { fundingFactoryInstance, newFundingInstance } from './fundingFactoryInst
 import web3 from "../utils/initWeb3";
 
 
-let getFundingDetails = async (index) => {
+let getFundingDetails = async (index, customAccount) => {
     //index=1，所有的页面；index=2，我发起的页面；index=3，我参与的页面
     //整个显示详情的逻辑是可以复用的，唯一的不同就是返回的众筹数组不同
     //所以可以使用if语句进行控制，从而复用代码
@@ -19,7 +19,7 @@ let getFundingDetails = async (index) => {
         })
     } else if (index === 3) {
         currentFunding = await fundingFactoryInstance.methods.getSupportorFunding().call({
-            from: accounts[0]
+            from: customAccount
         })
     }
 
@@ -74,7 +74,7 @@ let createFunding = (projectName, supportMoney, targetMoney, duration) => {
 
 }
 
-let handleInvestFunc = (fundingAddress,supportBalance) => {
+let handleInvestFunc = (fundingAddress,supportBalance, account, password) => {
 
     return new Promise(async (resolve,reject) => {
         try {
@@ -84,10 +84,9 @@ let handleInvestFunc = (fundingAddress,supportBalance) => {
             fundingInstance.options.address = fundingAddress
             //获取投资人地址
             let accounts = await web3.eth.getAccounts()
-
-            console.log(4444, supportBalance, accounts[0])
+            web3.eth.personal.unlockAccount(account, password, 5000).then(console.log('Account unlocked!'));
             let res = await fundingInstance.methods.invest().send({
-                from:accounts[0],
+                from:account,
                 value:supportBalance,
             })
             resolve(res)
@@ -150,15 +149,14 @@ let showRequests = (fundingAddress) => {
 
 }
 
-let approveRequest = (fundingAddress,index) => {
+let approveRequest = (fundingAddress,index, customAddress) => {
     return new Promise(async (resolve,reject) => {
         try {
             let accounts = await web3.eth.getAccounts()
             let fundingInstance = newFundingInstance()
             fundingInstance.options.address = fundingAddress
-
             let res = await fundingInstance.methods.approveRequest(index).send({
-                from:accounts[0]
+                from:customAddress
             })
 
             resolve(res)

@@ -45,7 +45,7 @@ const CardFunding = (props) => {
                     <List.Item>
                         <List.Content>
                             <List.Header>已筹</List.Header>
-                            {balance*10**(-18)} eth
+                            {balance*10**(-18)} ether
                     </List.Content>
                     </List.Item>
                     <List.Item>
