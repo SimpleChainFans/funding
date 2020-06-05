@@ -35,13 +35,13 @@ class AllFundingTab extends Component {
         //需要传递选中的合约地址
         //创建合约实例，参与众筹（send，别忘了合约转钱,value）
         try {
-            
+
             await handleInvestFunc(fundingAddress,supportBalance)
             this.setState({active:false})
         } catch (error) {
             console.log(error)
             this.setState({active:false})
-        }       
+        }
     }
 
     render() {
@@ -58,7 +58,7 @@ class AllFundingTab extends Component {
                         <Form onSubmit={this.handleInvest}>
                             <Form.Input type='text' value={projectName || ''} label='项目名称:' />
                             <Form.Input type='text' value={fundingAddress || ''} label='项目地址:' />
-                            <Form.Input type='text' value={supportBalance || ''} label='支持金额:'
+                            <Form.Input type='text' value={supportBalance*10**(-18) || ''} label='支持金额:'
                                 labelPosition='left'>
                                 <Label basic>￥</Label>
                                 <input />
