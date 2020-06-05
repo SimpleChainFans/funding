@@ -85,6 +85,7 @@ let handleInvestFunc = (fundingAddress,supportBalance) => {
             //获取投资人地址
             let accounts = await web3.eth.getAccounts()
 
+            console.log(4444, supportBalance, accounts[0])
             let res = await fundingInstance.methods.invest().send({
                 from:accounts[0],
                 value:supportBalance,

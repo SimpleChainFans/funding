@@ -21,12 +21,12 @@ class CreateFundingForm extends Component {
         this.setState({active:true})
 
         try {
-            await createFunding(projectName, targetMoney, supportMoney, duration)
+            await createFunding(projectName, supportMoney, targetMoney , duration)
             alert('创建合约成功:\n')
             this.setState({active:false})
 
         } catch (error) {
-            
+
             this.setState({active:false})
             console.log(error)
         }
@@ -61,7 +61,7 @@ class CreateFundingForm extends Component {
                             <Label basic>￥</Label>
                             <input/>
                         </Form.Input>
-                        <Form.Input required type='text' placeholder='目标金额' name='duration' value={duration}
+                        <Form.Input required type='text' placeholder='众筹时间' name='duration' value={duration}
                                     label='众筹时间:'
                                     labelPosition='left'
                                     onChange={this.handleChange}>
