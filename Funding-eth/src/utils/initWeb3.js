@@ -15,7 +15,7 @@
 
 let Web3 = require('web3')
 
-let web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.3.148:8545"))
+let web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.4.106:9545"))
 
 //export导出，es6语法，defuault标识默认导出，在使用时，名字可以改变
 // 使用时，用import导入
