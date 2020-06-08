@@ -1,15 +1,26 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
+  "name": "Funding",
+  "description": "SimpleChain Plugin",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "logo_120.png",
+    "default_title": "SimpleChain Simplug"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "icons": {
+    "120": "logo_120.png"
+  },
+  "web_accessible_resources" : ["sp_plug_inject.js"],
+  "content_security_policy": "script-src 'self' 'unsafe-inline'; object-src 'self'"
 }
